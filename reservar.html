@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Reserva tu viaje – Alas del Sur</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700&family=IBM+Plex+Sans:wght@400;500&display=swap">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<link rel="stylesheet" href="css/reservar.css">
+</head>
+<body>
+<header class="bar">
+  <a class="logo" href="reservar.html">Alas del Sur</a>
+  <a class="adm" href="index.html">Panel de administración</a>
+</header>
+
+<main class="page">
+  <div class="intro">
+    <h1>Reserva tu próximo viaje</h1>
+    <p>Completa tus datos y elige destino y paquete. Tu reserva quedará pendiente hasta que la agencia la confirme.</p>
+  </div>
+
+  <div id="setup" class="alert" hidden>Falta conectar la base de datos: edita <b>js/config.js</b>.</div>
+  <div id="msg" class="alert err" role="alert" hidden></div>
+
+  <div class="grid" id="main-grid">
+    <form id="frm">
+      <fieldset>
+        <legend>Tus datos</legend>
+        <div class="two">
+          <div><label for="nombre">Nombre *</label><input id="nombre" required autocomplete="given-name"></div>
+          <div><label for="apellido">Apellido *</label><input id="apellido" required autocomplete="family-name"></div>
+        </div>
+        <label for="telefono">Teléfono</label>
+        <input id="telefono" type="tel" autocomplete="tel">
+        <div class="two">
+          <div>
+            <label for="tipo_documento">Tipo de documento *</label>
+            <select id="tipo_documento" required>
+              <option value="">— Seleccionar —</option>
+              <option>DNI</option><option>Pasaporte</option><option>Carné de extranjería</option><option>RUC</option>
+            </select>
+          </div>
+          <div><label for="numero_documento">N.º de documento *</label><input id="numero_documento" required></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Tu viaje</legend>
+        <label for="destino">Destino *</label>
+        <select id="destino" required><option value="">Cargando destinos…</option></select>
+        <label for="paquete">Paquete *</label>
+        <select id="paquete" required disabled><option value="">Primero elige un destino</option></select>
+      </fieldset>
+
+      <button class="btn" id="send" type="submit">Reservar</button>
+    </form>
+
+    <aside class="ticket" aria-live="polite">
+      <div class="t-top">
+        <span class="t-lbl">Tu reserva</span>
+        <div id="t-dest" class="t-dest">Elige un destino</div>
+        <div id="t-desc" class="t-desc">Aquí verás el resumen de tu viaje.</div>
+      </div>
+      <div class="t-cut"></div>
+      <div class="t-bot">
+        <div><span class="t-lbl">Paquete</span><div id="t-paq">—</div></div>
+        <div class="t-row">
+          <div><span class="t-lbl">Duración</span><div id="t-dur">—</div></div>
+          <div><span class="t-lbl">Precio</span><div id="t-pre" class="t-pre">—</div></div>
+        </div>
+        <div><span class="t-lbl">Estado</span><div><span class="pill">Pendiente</span></div></div>
+      </div>
+    </aside>
+  </div>
+
+  <section id="ok" class="done" hidden>
+    <h2>¡Reserva registrada!</h2>
+    <p>Tu número de reserva es <b id="ok-id"></b>. Está en estado <span class="pill">Pendiente</span> hasta que la agencia la confirme.</p>
+    <button class="btn" id="again" type="button">Hacer otra reserva</button>
+  </section>
+</main>
+
+<script src="js/config.js"></script>
+<script src="js/reservar.js"></script>
+</body>
+</html>

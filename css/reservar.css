@@ -1,0 +1,321 @@
+/* =========================================
+   1. VARIABLES Y CONFIGURACIÓN GLOBAL
+   ========================================= */
+:root {
+  --ink: #10263b;
+  --ink2: #1b3a55;
+  --paper: #f4f7f9;
+  --card: #fff;
+  --line: #d9e2e8;
+  --teal: #0e7c86;
+  --teal-d: #0a5c64;
+  --sun: #e8a33d;
+  --red: #b3402f;
+  --text: #18232d;
+  --mute: #5f7080;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+body {
+  margin: 0;
+  font: 15px/1.5 "IBM Plex Sans", system-ui, sans-serif;
+  color: var(--text);
+  background: var(--paper);
+}
+
+h1,
+h2,
+.logo,
+.t-dest {
+  font-family: "Bricolage Grotesque", "IBM Plex Sans", sans-serif;
+}
+
+/* =========================================
+   2. BARRA SUPERIOR Y ESTRUCTURA DE PÁGINA
+   ========================================= */
+.bar {
+  background: var(--ink);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 32px;
+}
+
+.logo {
+  color: #fff;
+  font-size: 21px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.adm {
+  color: #a9c4d8;
+  text-decoration: none;
+  font-size: 14px;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.adm:hover {
+  background: var(--ink2);
+  color: #fff;
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 34px 20px 60px;
+}
+
+.intro h1 {
+  font-size: 34px;
+  margin: 0 0 6px;
+}
+
+.intro p {
+  margin: 0 0 24px;
+  color: var(--mute);
+  max-width: 60ch;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+  gap: 28px;
+  align-items: start;
+}
+
+/* =========================================
+   3. FORMULARIOS Y BOTONES
+   ========================================= */
+form {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 8px 24px 24px;
+}
+
+fieldset {
+  border: 0;
+  padding: 0;
+  margin: 16px 0 4px;
+}
+
+legend {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  padding: 0;
+  margin-bottom: 2px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  color: var(--mute);
+  margin: 12px 0 4px;
+}
+
+input,
+select {
+  font: inherit;
+  padding: 9px 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  outline: 2px solid var(--teal);
+  border-color: transparent;
+}
+
+select:disabled {
+  background: #eef3f6;
+  color: var(--mute);
+}
+
+.two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.btn {
+  font: inherit;
+  font-weight: 500;
+  font-size: 16px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 22px;
+  background: var(--teal);
+  color: #fff;
+  margin-top: 20px;
+  width: 100%;
+}
+
+.btn:hover {
+  background: var(--teal-d);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--sun);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+/* =========================================
+   4. RESUMEN TIPO PASABORDO (TICKET)
+   ========================================= */
+.ticket {
+  background: var(--ink);
+  color: #e8f1f7;
+  border-radius: 14px;
+  position: sticky;
+  top: 20px;
+}
+
+.t-top,
+.t-bot {
+  padding: 22px 24px;
+}
+
+.t-bot {
+  display: grid;
+  gap: 14px;
+}
+
+.t-row {
+  display: flex;
+  gap: 30px;
+}
+
+.t-lbl {
+  display: block;
+  font-size: 12px;
+  color: #8fb0c7;
+  margin-bottom: 2px;
+}
+
+.t-dest {
+  font-size: 26px;
+  font-weight: 700;
+  line-height: 1.15;
+  color: #fff;
+}
+
+.t-desc {
+  color: #a9c4d8;
+  font-size: 14px;
+  margin-top: 6px;
+}
+
+.t-pre {
+  font-family: "Bricolage Grotesque", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--sun);
+}
+
+.t-cut {
+  position: relative;
+  border-top: 2px dashed #3b5b78;
+  margin: 0 18px;
+}
+
+.t-cut::before,
+.t-cut::after {
+  content: "";
+  position: absolute;
+  top: -12px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.t-cut::before {
+  left: -29px;
+}
+
+.t-cut::after {
+  right: -29px;
+}
+
+/* =========================================
+   5. ALERTAS, ETIQUETAS Y CONFIRMACIÓN
+   ========================================= */
+.alert {
+  background: #fff4dc;
+  border: 1px solid var(--sun);
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 18px;
+}
+
+.alert.err {
+  background: #f9e3df;
+  border-color: var(--red);
+  color: #7d2619;
+}
+
+.pill {
+  display: inline-block;
+  padding: 2px 12px;
+  border-radius: 99px;
+  font-size: 13px;
+  background: #fbecc9;
+  color: #7a5309;
+}
+
+.done {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 32px;
+  max-width: 520px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.done h2 {
+  margin: 0 0 8px;
+  font-size: 28px;
+}
+
+/* =========================================
+   6. DISEÑO RESPONSIVO (MÓVILES / TABLETS)
+   ========================================= */
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ticket {
+    position: static;
+    order: -1;
+  }
+
+  .two {
+    grid-template-columns: 1fr;
+  }
+
+  .bar {
+    padding: 12px 16px;
+  }
+}
