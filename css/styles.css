@@ -2,15 +2,21 @@
    1. VARIABLES Y CONFIGURACIÓN GLOBAL
    ========================================= */
 :root {
+  /* Imágenes */
+  --foto-lateral: url("https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&w=800&q=70");
+
+  /* Colores principales */
   --ink: #10263b;
   --ink2: #1b3a55;
-  --paper: #f4f7f9;
-  --card: #fff;
-  --line: #d9e2e8;
   --teal: #0e7c86;
   --teal-d: #0a5c64;
   --sun: #e8a33d;
   --red: #b3402f;
+
+  /* Superficies y texto */
+  --paper: #f4f7f9;
+  --card: #fff;
+  --line: #d9e2e8;
   --text: #18232d;
   --mute: #5f7080;
 }
@@ -21,11 +27,11 @@
 
 body {
   margin: 0;
-  font: 15px/1.5 "IBM Plex Sans", system-ui, sans-serif;
-  color: var(--text);
-  background: var(--paper);
-  display: flex;
   min-height: 100vh;
+  display: flex;
+  background: var(--paper);
+  color: var(--text);
+  font: 15px/1.5 "IBM Plex Sans", system-ui, sans-serif;
 }
 
 h1,
@@ -35,34 +41,37 @@ h2,
 }
 
 /* =========================================
-   2. BARRA LATERAL Y NAVEGACIÓN
+   2. BARRA LATERAL (SIDEBAR) Y NAVEGACIÓN
    ========================================= */
 aside {
+  position: sticky;
+  top: 0;
   width: 230px;
-  background: var(--ink);
-  color: #dbe7f0;
+  height: 100vh;
   padding: 22px 14px;
   display: flex;
   flex-direction: column;
   gap: 6px;
-  position: sticky;
-  top: 0;
-  height: 100vh;
+  color: #dbe7f0;
+  background: 
+    linear-gradient(180deg, rgba(16, 38, 59, 0.72), rgba(16, 38, 59, 0.92)),
+    var(--foto-lateral) center / cover no-repeat,
+    var(--ink);
 }
 
 .brand {
+  padding: 0 10px 18px;
   font-size: 21px;
   font-weight: 700;
-  color: #fff;
-  padding: 0 10px 18px;
   line-height: 1.15;
+  color: #fff;
 }
 
 .brand small {
   display: block;
+  margin-top: 4px;
   font: 400 12px "IBM Plex Sans";
   color: #8fb0c7;
-  margin-top: 4px;
 }
 
 .nav {
@@ -90,18 +99,18 @@ aside {
 }
 
 .nav span {
-  font-size: 12px;
-  background: rgba(255, 255, 255, 0.16);
   padding: 1px 8px;
   border-radius: 99px;
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.16);
 }
 
 .nav.cta {
   margin-top: auto;
+  justify-content: center;
   background: var(--sun);
   color: var(--ink);
   font-weight: 500;
-  justify-content: center;
   text-decoration: none;
 }
 
@@ -114,23 +123,27 @@ aside {
    ========================================= */
 main {
   flex: 1;
-  padding: 28px 32px;
   min-width: 0;
+  padding: 28px 32px;
 }
 
 .top {
   display: flex;
-  gap: 12px;
-  align-items: center;
   flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
   margin-bottom: 18px;
 }
 
 h1 {
-  margin: 0;
-  font-size: 28px;
   flex: 1;
   min-width: 160px;
+  margin: 0;
+  font-size: 28px;
+}
+
+.search {
+  width: 240px;
 }
 
 /* =========================================
@@ -139,13 +152,13 @@ h1 {
 input,
 select,
 textarea {
-  font: inherit;
+  width: 100%;
   padding: 8px 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fff;
   color: var(--text);
-  width: 100%;
+  font: inherit;
 }
 
 input:focus,
@@ -155,19 +168,22 @@ textarea:focus {
   border-color: transparent;
 }
 
-.search {
-  width: 240px;
+label {
+  display: block;
+  margin: 10px 0 4px;
+  font-size: 13px;
+  color: var(--mute);
 }
 
 button.b {
-  font: inherit;
-  font-weight: 500;
   cursor: pointer;
+  padding: 9px 16px;
   border: 0;
   border-radius: 8px;
-  padding: 9px 16px;
   background: var(--teal);
   color: #fff;
+  font: inherit;
+  font-weight: 500;
 }
 
 button.b:hover {
@@ -180,9 +196,9 @@ button.b:focus-visible {
 }
 
 button.g {
+  padding: 4px 8px;
   background: transparent;
   color: var(--teal-d);
-  padding: 4px 8px;
 }
 
 button.g:hover {
@@ -198,43 +214,43 @@ button.g.d:hover {
 }
 
 /* =========================================
-   5. TABLAS Y ETIQUETAS (TAGS)
+   5. TABLAS Y ETIQUETAS DE ESTADO (TAGS)
    ========================================= */
 .wrap {
-  background: var(--card);
+  overflow-x: auto;
   border: 1px solid var(--line);
   border-radius: 10px;
-  overflow-x: auto;
+  background: var(--card);
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
   min-width: 560px;
+  border-collapse: collapse;
 }
 
 th,
 td {
-  text-align: left;
   padding: 11px 14px;
   border-bottom: 1px solid var(--line);
+  text-align: left;
   white-space: nowrap;
 }
 
-td.l {
-  white-space: normal;
-  max-width: 280px;
-}
-
 th {
-  font-weight: 500;
+  background: #eef3f6;
   color: var(--mute);
   font-size: 13px;
-  background: #eef3f6;
+  font-weight: 500;
 }
 
 tr:last-child td {
   border-bottom: 0;
+}
+
+td.l {
+  max-width: 280px;
+  white-space: normal;
 }
 
 td.act {
@@ -245,8 +261,8 @@ td.act {
   display: inline-block;
   padding: 2px 10px;
   border-radius: 99px;
-  font-size: 13px;
   background: #e6eef3;
+  font-size: 13px;
 }
 
 .tag.Confirmada {
@@ -279,10 +295,10 @@ td.act {
    6. MODALES, ALERTAS Y NOTIFICACIONES
    ========================================= */
 dialog {
+  width: min(480px, 94vw);
+  padding: 0;
   border: 0;
   border-radius: 12px;
-  padding: 0;
-  width: min(480px, 94vw);
   box-shadow: 0 20px 60px rgba(16, 38, 59, 0.35);
 }
 
@@ -299,13 +315,6 @@ form h2 {
   font-size: 21px;
 }
 
-label {
-  display: block;
-  font-size: 13px;
-  color: var(--mute);
-  margin: 10px 0 4px;
-}
-
 .row {
   display: flex;
   justify-content: flex-end;
@@ -313,35 +322,35 @@ label {
   margin-top: 20px;
 }
 
+#setup {
+  display: none;
+  margin-bottom: 16px;
+  padding: 12px 16px;
+  border: 1px solid var(--sun);
+  border-radius: 8px;
+  background: #fff4dc;
+}
+
 #toast {
   position: fixed;
   bottom: 20px;
   left: 50%;
-  transform: translateX(-50%);
-  background: var(--ink);
-  color: #fff;
-  padding: 10px 18px;
-  border-radius: 8px;
+  z-index: 9;
   display: none;
   max-width: 90vw;
-  z-index: 9;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: var(--ink);
+  color: #fff;
+  transform: translateX(-50%);
 }
 
 #toast.err {
   background: var(--red);
 }
 
-#setup {
-  background: #fff4dc;
-  border: 1px solid var(--sun);
-  padding: 12px 16px;
-  border-radius: 8px;
-  margin-bottom: 16px;
-  display: none;
-}
-
 /* =========================================
-   7. DISEÑO RESPONSIVO (MÓVILES / TABLETS)
+   7. DISEÑO RESPONSIVO (MÓVILES Y TABLETS)
    ========================================= */
 @media (max-width: 760px) {
   body {
@@ -349,12 +358,12 @@ label {
   }
 
   aside {
+    position: static;
     width: 100%;
     height: auto;
-    position: static;
+    padding: 12px;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 12px;
   }
 
   .brand {
